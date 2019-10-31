@@ -15,10 +15,14 @@ def index():
 def login():
     name = request.form.get("user-name")
     email = request.form.get("user-email")
+    password=request.form.get("user-password")
     #neues objekt vom Typ User (Model)
-    user = User(name=name, email=email)
-    db.add(user)
-    db.commit()
+    #user = User.fetch_one(query=["email", "==", email])
+    user = db.query(User).filter_by(email=email).first()
+    if not user:
+     user = User(name=name, email=email, password=password)
+     db.add(user)
+     db.commit()
     #Cookie
     response = make_response(redirect(url_for('index')))
     response.set_cookie("email", email)
