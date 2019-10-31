@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Model Test</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<h1>Simple Database!</h1>
+{% if user.email %}
+<p>Hello : {{ user.name }}</p>
+<h3 style="color: brown">Your Email : {{user.email}}</h3>
+{% else %}
+<form method="post" action="/login">
+        <input class="input-group-prepend" type="text" name="user-name" placeholder="Name eingeben"><br>
+        <input class="input-group-prepend" type="email" name="user-email" placeholder="Email eingeben"><br>
+        <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+{% endif %}
+
+</body>
+</html>
